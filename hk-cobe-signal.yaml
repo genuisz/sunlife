@@ -33,9 +33,8 @@ spec:
       - name: "cobe-signal-sha256-1"
         image: "gcr.io/sunlife001/cobe-signal:latest"
         volumeMounts:
-        - metadata:
-            name: signal-data
-            mountPath: /signaldata
+        - name: signal-data
+          mountPath: /signaldata
  volumeClaimTemplates:
  - metadata:
      name: signal-data
