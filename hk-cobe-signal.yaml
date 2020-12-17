@@ -31,7 +31,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
       - name: "cobe-signal-sha256-1"
-        image: "gcr.io/sunlife001/cobe-signal@sha256:6b01f92b4914cf19af0edd51c17f23c0794693241d3f6ceabecbbec7d7202ff8"
+        image: "gcr.io/sunlife001/cobe-signal@sha256:dd24b104a4d8aa1a202df0b716dc2fd08da6b15a52bac6b2c4dfd5a90b043669"
  volumeClaimTemplates:
  - metadata:
      name: signal-data
