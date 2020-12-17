@@ -1,0 +1,30 @@
+apiVersion: "apps/v1"
+kind: "StatefulSet"
+metadata:
+  name: "hk-cobe-signal"
+  namespace: "cobe-signal"
+  labels:
+    app: "hk-cobe-signal"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: "hk-cobe-signal"
+  template:
+    metadata:
+      labels:
+        app: "hk-cobe-signal"
+    spec:
+      containers:
+      - name: "cobe-signal-sha256-1"
+        image: "gcr.io/sunlife001/cobe-signal@sha256:6b01f92b4914cf19af0edd51c17f23c0794693241d3f6ceabecbbec7d7202ff8"
+volumeClaimTemplates:
+- metadata:
+    name: signal-data
+    annotations:
+      volume.beta.kubernetes.io/storage-class: "standard"
+  spec:
+    accessModes: [ "ReadWriteOnce" ]
+    resources:
+      requests:
+        storage: 100Gi
