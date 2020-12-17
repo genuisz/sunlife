@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hk-cobe-signal
+spec:
+  serviceName: "hk-cobe-signal"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hk-cobe-signal
+  template:
+    metadata:
+      labels:
+        app: hk-cobe-signal
+    spec:
+      terminationGracePeriodSeconds: 20
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - hk-cobe-signal
+              topologyKey: kubernetes.io/hostname
+      containers:
+      - name: hk-cobe-signal
+        image: "gcr.io/sunlife001/cobe-signal:latest"
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi
