@@ -32,7 +32,7 @@ spec:
       containers:
       - name: "cobe-signal-sha256-1"
         image: "gcr.io/sunlife001/cobe-signal:latest"
-volumeClaimTemplates:
+VolumeClaimTemplates:
 - metadata:
     name: signal-data
   spec:
