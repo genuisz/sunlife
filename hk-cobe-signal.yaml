@@ -32,16 +32,11 @@ spec:
       containers:
       - name: "cobe-signal-sha256-1"
         image: "gcr.io/sunlife001/cobe-signal:latest"
-        volumeMounts:
-        - name: signal-data
-          mountPath: "/signaldata"
- volumeClaimTemplates:
- - metadata:
-     name: signal-data
-     annotations:
-       volume.beta.kubernetes.io/storage-class: "standard"
-   spec:
-     accessModes: [ "ReadWriteOnce" ]
-     resources:
-       requests:
-         storage: 100Gi
+volumeClaimTemplates:
+- metadata:
+    name: signal-data
+  spec:
+    accessModes: [ "ReadWriteOnce" ]
+    resources:
+      requests:
+        storage: 100Gi
