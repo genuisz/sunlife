@@ -35,7 +35,7 @@ spec:
         volumeMounts:
         - metadata:
             name: signal-data
-            mountPath: /hksignaldata
+            mountPath: /signaldata
  volumeClaimTemplates:
  - metadata:
      name: signal-data
